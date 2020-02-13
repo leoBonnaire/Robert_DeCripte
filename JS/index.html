@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>RobertCrypt</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="sketch.js"></script>
+  </head>
+  <body style="text-align:center;color:white">
+    <div class="wrapper style1">
+      <h1 style="font-size:350%">Robert de Cripte</h1><br><br>
+      <div id="extra">
+        <div class="container">
+		  
+          <textarea id="msgct" placeholder="Enter the text here"></textarea><br>
+		  <input type="text" id="keyct" placeholder="Enter the key here">
+          <br><br>
+          
+          <input type="button" onclick="crypt()" value="Crypt"> | 
+          <input type="button" onclick="decrypt()" value="Decrypt">
+          <br><br>
+		  
+		  <div class="result">
+		    <br><br>
+			<p id="result" style="word-wrap: break-word;">The result will appear here.</p>
+			<br>
+		  </div>
+		  
+		  
+        </div>
+      </div>
+    </div>
+ 
+  </body>
+  
+<script>
+
+function crypt() {
+	let text = document.getElementById("msgct").value;
+	let key = document.getElementById("keyct").value;
+	
+	document.getElementById("result").innerHTML = chiffre(text, key);
+}
+
+function decrypt() {
+	let text = document.getElementById("msgct").value;
+	let key = document.getElementById("keyct").value;
+	
+	document.getElementById("result").innerHTML = escapeHtml(dechiffre(text, key));
+}
+
+function escapeHtml(text) {
+  return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;")
+	  .replace(/\n/, "<br>");
+}
+
+</script>
+  
+</html>
